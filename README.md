@@ -4,8 +4,8 @@ WordPress Theme to manage links.
 
 ## To Do
 
-- [ ] Create build
-- [ ] Use Bootstrap as a depedency
+- [x] Create build
+- [x] Use Bootstrap as a depedency
 - [ ] Use PHP for for loading links, categories, pagination...
 - [ ] Create list
 - [ ] Create pagination
