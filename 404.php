@@ -7,8 +7,7 @@
  * @package link-manager
  */
 
-get_header();
-?>
+get_header(); ?>
 
 	<main id="primary" class="container">
 
@@ -16,42 +15,38 @@ get_header();
 			<div class="col">
 
 				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'link-manager' ); ?></h1>
+					<h1 class="page-title"><?php esc_html_e("Oops! That page can&rsquo;t be found.", "link-manager"); ?></h1>
 				</header><!-- .page-header -->
 
 				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'link-manager' ); ?></p>
+					<p><?php esc_html_e("It looks like nothing was found at this location. Maybe try one of the links below or a search?", "link-manager"); ?></p>
 
 						<?php
-						get_search_form();
+      get_search_form();
 
-						the_widget( 'WP_Widget_Recent_Posts' );
-						?>
+      the_widget("WP_Widget_Recent_Posts");
+      ?>
 
 						<div class="widget widget_categories">
-							<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'link-manager' ); ?></h2>
+							<h2 class="widget-title"><?php esc_html_e("Most Used Categories", "link-manager"); ?></h2>
 							<ul>
-								<?php
-								wp_list_categories(
-									array(
-										'orderby'    => 'count',
-										'order'      => 'DESC',
-										'show_count' => 1,
-										'title_li'   => '',
-										'number'     => 10,
-									)
-								);
-								?>
+								<?php wp_list_categories([
+          "orderby" => "count",
+          "order" => "DESC",
+          "show_count" => 1,
+          "title_li" => "",
+          "number" => 10,
+        ]); ?>
 							</ul>
 						</div><!-- .widget -->
 
 						<?php
-						/* translators: %1$s: smiley */
-						$link_manager_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'link-manager' ), convert_smilies( ':)' ) ) . '</p>';
-						the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$link_manager_archive_content" );
+      /* translators: %1$s: smiley */
+      $link_manager_archive_content = "<p>" . sprintf(esc_html__('Try looking in the monthly archives. %1$s', "link-manager"), convert_smilies(":)")) . "</p>";
+      the_widget("WP_Widget_Archives", "dropdown=1", "after_title=</h2>$link_manager_archive_content");
 
-						the_widget( 'WP_Widget_Tag_Cloud' );
-						?>
+      the_widget("WP_Widget_Tag_Cloud");
+      ?>
 
 				</div><!-- .page-content -->
 			</div>
@@ -59,5 +54,4 @@ get_header();
 
 	</main><!-- #main -->
 
-<?php
-get_footer();
+<?php get_footer();

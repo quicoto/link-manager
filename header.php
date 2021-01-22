@@ -8,12 +8,11 @@
  *
  * @package link-manager
  */
-
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta charset="<?php bloginfo("charset"); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
@@ -28,20 +27,18 @@
 			<div class="row">
 				<div class="col pt-3 pb-3">
 					<?php
-						if ( is_front_page() && is_home() ) :
-							?>
-							<h1 class="site-title">🔗 <a class="link-light" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-							<?php
-						else :
-							?>
-							<p class="site-title"><a class="link-light" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-							<?php
-						endif;
-						$link_manager_description = get_bloginfo( 'description', 'display' );
-						if ( $link_manager_description || is_customize_preview() ) :
-							?>
-							<p class="site-description"><?php echo $link_manager_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-						<?php endif; ?>
+     if (is_front_page() && is_home()): ?>
+							<h1 class="site-title">🔗 <a class="link-light" href="<?php echo esc_url(home_url("/")); ?>" rel="home"><?php bloginfo("name"); ?></a></h1>
+							<?php else: ?>
+							<p class="site-title"><a class="link-light" href="<?php echo esc_url(home_url("/")); ?>" rel="home"><?php bloginfo("name"); ?></a></p>
+							<?php endif;
+     $link_manager_description = get_bloginfo("description", "display");
+     if ($link_manager_description || is_customize_preview()): ?>
+							<p class="site-description"><?php echo $link_manager_description;
+       // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+       ?></p>
+						<?php endif;
+     ?>
 				</div>
 			</div>
 		</div>
