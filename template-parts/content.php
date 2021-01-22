@@ -9,50 +9,24 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php
-  if (is_singular()):
-    the_title('<h1 class="entry-title">', "</h1>");
-  else:
-    the_title('<h2 class="entry-title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', "</a></h2>");
-  endif;
-
-  if ("post" === get_post_type()): ?>
-			<div class="entry-meta">
-				<?php
-    link_manager_posted_on();
-    link_manager_posted_by();
-    ?>
-			</div><!-- .entry-meta -->
-		<?php endif;
-  ?>
-	</header><!-- .entry-header -->
-
-	<div class="entry-content">
-		<?php
-  the_content(
-    sprintf(
-      wp_kses(
-        /* translators: %s: Name of current post. Only visible to screen readers */
-        __('Continue reading<span class="screen-reader-text"> "%s"</span>', "link-manager"),
-        [
-          "span" => [
-            "class" => [],
-          ],
-        ]
-      ),
-      wp_kses_post(get_the_title())
-    )
-  );
-
-  wp_link_pages([
-    "before" => '<div class="page-links">' . esc_html__("Pages:", "link-manager"),
-    "after" => "</div>",
-  ]);
-  ?>
-	</div><!-- .entry-content -->
-
-	<footer class="entry-footer">
-		<?php link_manager_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+  <div class="card bg-dark mb-3">
+    <?php if (get_the_title() !== "") { ?>
+        <header class="card-header">
+    <?php if (is_singular()):
+      the_title('<h1 class="entry-title">', "</h1>");
+    else:
+      the_title('<h2 class="entry-title">', "</h2>");
+    endif; ?>
+        </header>
+    <?php } ?>
+    <div class="card-body">
+      <div class="card-text">
+        <?php
+        the_content();
+        echo getLinkUrl(get_the_ID());
+        ?>
+      </div>
+    </div>
+    <?php getLinkTags(get_the_ID()); ?>
+  </div>
 </article><!-- #post-<?php the_ID(); ?> -->

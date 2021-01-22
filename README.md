@@ -25,10 +25,10 @@ javascript:window.location=`YOUR_SITE/wp-admin/post-new.php?post_type=link&title
 - [x] Create build
 - [x] Use Bootstrap as a depedency
 - [x] Create webpack bundle for the admin script
-- [ ] Use PHP for for loading links, categories, pagination...
-- [ ] Create list
+- [x] Use PHP for for loading links, categories, pagination...
+- [x] Create home list
 - [ ] Create pagination
-- [ ] Create archive
+- [ ] Create archive of tags
 - [ ] Create search
 - [ ] Create custom post type
 - [ ] Title of the link

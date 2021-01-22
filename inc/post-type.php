@@ -54,3 +54,11 @@ function postype_link_init()
 }
 
 add_action("init", "postype_link_init");
+
+function add_custom_post_type_to_query($query)
+{
+  if ($query->is_home() && $query->is_main_query()) {
+    $query->set("post_type", ["link"]);
+  }
+}
+add_action("pre_get_posts", "add_custom_post_type_to_query");

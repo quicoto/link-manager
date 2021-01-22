@@ -8,15 +8,14 @@
  *
  * @package link-manager
  */
-
 ?>
-	<footer id="colophon" class="site-footer bg-dark text-white mt-3">
+	<footer id="colophon" class="site-footer bg-dark text-light mt-2">
 		<div class="container pt-4 pb-4">
 			<div class="row">
-					<div class="col">
+					<div class="col-12 col-md-6 text-center text-md-start mb-2 mb-md-0">
 						Powered by <a class="link-light" href="https://wordpress.org">WordPress</a>
 					</div>
-					<div class="col text-md-end">
+					<div class="col-12 col-md-6 text-center text-md-end">
 						With ❤️ from <a class="link-light" href="https://ricard.dev/">Ricard Torres</a>
 					</div>
 				</div>

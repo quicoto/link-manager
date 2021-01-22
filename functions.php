@@ -33,6 +33,20 @@ if (!function_exists("link_manager_setup")):
     // Add default posts and comments RSS feed links to head.
     add_theme_support("automatic-feed-links");
 
+    function linkmanager_widgets_init()
+    {
+      register_sidebar([
+        "name" => esc_html__("Sidebar", "test"),
+        "id" => "sidebar-1",
+        "description" => esc_html__("Add widgets here.", "test"),
+        "before_widget" => '<section id="%1$s" class="widget %2$s">',
+        "after_widget" => "</section>",
+        "before_title" => '<h2 class="widget-title">',
+        "after_title" => "</h2>",
+      ]);
+    }
+    add_action("widgets_init", "linkmanager_widgets_init");
+
     /*
      * Let WordPress manage the document title.
      * By adding theme support, we declare that this theme does not use a
@@ -89,6 +103,35 @@ function link_manager_scripts()
   wp_enqueue_style("linkmanager-style", get_stylesheet_uri(), [], $theme_version);
 }
 add_action("wp_enqueue_scripts", "link_manager_scripts");
+
+function getLinkUrl($post_id)
+{
+  $output = "";
+  $url = get_post_meta($post_id, "url", true);
+
+  if ($url) {
+    $output = sprintf('➡️ <a class="link-light" href="%s" target="_blank" rel="nofollow noopener noreferrer">%s</a>', $url, $url);
+  }
+
+  return $output;
+}
+
+function getLinkTags($post_id)
+{
+  $tags = wp_get_post_tags($post_id);
+  $html = "";
+  if (count($tags) > 0) {
+    $html = '<footer class="card-footer text-muted">Tags: ';
+    foreach ($tags as $tag) {
+      $tag_link = get_tag_link($tag->term_id);
+
+      $html .= "<a href='{$tag_link}' title='{$tag->name} Tag' class='link-light'>";
+      $html .= "{$tag->name}</a> ";
+    }
+    $html .= "</footer>";
+  }
+  echo $html;
+}
 
 /**
  * Register Link post-type
