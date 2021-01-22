@@ -4,20 +4,21 @@
   "description": "WordPress Theme to manage links.",
   "scripts": {
     "build": "NODE_ENV=production run-s format:* lint:js build:*",
-    "build:css": "run-s css:precompile css:autoprefix css:minify",
+    "build:css": "run-s css:precompile css:purgeCSS css:minify",
     "build:js": "webpack --config webpack.config.js",
     "lint:js": "eslint 'js/*.js' --fix",
-    "css:autoprefix": "postcss --use autoprefixer --no-map --replace style.css",
+    "css:purgeCSS": "postcss style.css -o style.css",
     "css:precompile": "node-sass --omitSourceMapUrl true style.scss style.css",
     "css:minify": "cleancss -o style.css style.css",
-    "watch": "NODE_ENV=development onchange 'js/*.js' 'style.scss' -- npm-run-all build:*",
+    "watch": "NODE_ENV=development onchange 'js/*.js' 'sass/*.scss' 'style.scss' '*.php' '**/*.php' -- npm-run-all build:*",
     "format": "npm-run-all format:*",
     "format:js": "prettier --write ./js/*.js",
-    "format:scss": "prettier --write ./style.scss"
+    "format:scss": "prettier --write ./style.scss",
+    "format:php": "prettier --write ./*.php"
   },
   "dependencies": {
-    "autoprefixer": "^10.2.3",
-    "bootstrap": "^4.6.0",
+    "@fullhuman/postcss-purgecss": "^4.0.0",
+    "bootstrap": "^5.0.0-beta1",
     "clean-css-cli": "^4.3.0",
     "eslint": "^7.18.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -31,7 +32,7 @@
     "stylelint": "13.9.0",
     "stylelint-config-standard": "20.0.0",
     "uglify-es": "^3.3.9",
-    "webpack": "^5.16.0",
+    "webpack": "^5.17.0",
     "webpack-cli": "^4.4.0"
   },
   "repository": {

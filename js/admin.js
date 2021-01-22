@@ -17,7 +17,9 @@
     _$.postTitle = document.querySelector(SELECTORS.postTitle);
 
     if (_$.postTitle) {
-      _$.postTitleLabel = document.querySelector(`[for="${_$.postTitle.getAttribute('id')}"]`);
+      _$.postTitleLabel = document.querySelector(
+        `[for="${_$.postTitle.getAttribute('id')}"]`,
+      );
     }
   }
 
@@ -47,7 +49,9 @@
    * @param {string} [locationSearch] - normally window.location.search
    * @return {object} key value presentation of search params
    */
-  function getLocationSearchParameters(locationSearch = window.location.search) {
+  function getLocationSearchParameters(
+    locationSearch = window.location.search,
+  ) {
     const queryParameters = {};
     let nameValue;
 
@@ -55,13 +59,16 @@
       return queryParameters;
     }
     // remove '?' symbol at the beginning
-    locationSearch.substr(1).split('&').forEach((searchPart) => {
-      nameValue = searchPart.split('=');
+    locationSearch
+      .substr(1)
+      .split('&')
+      .forEach((searchPart) => {
+        nameValue = searchPart.split('=');
 
-      queryParameters[nameValue[0].toLowerCase()] = _decodeAndConvert(
-        getEscapedURLString(nameValue[1]),
-      );
-    });
+        queryParameters[nameValue[0].toLowerCase()] = _decodeAndConvert(
+          getEscapedURLString(nameValue[1]),
+        );
+      });
 
     return queryParameters;
   }

@@ -11,19 +11,16 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'link-manager' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'link-manager' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'link-manager' ), 'link-manager', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
+	<footer id="colophon" class="site-footer bg-dark text-white mt-3">
+		<div class="container pt-4 pb-4">
+			<div class="row">
+				<div class="col">
+					Powered by <a class="link-light" href="https://wordpress.org">WordPress</a>
+				</div>
+				<div class="col text-md-end">
+					With ❤️ from <a class="link-light" href="https://ricard.dev/">Ricard Torres</a>
+				</div>
+			</div>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

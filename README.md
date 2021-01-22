@@ -2,11 +2,29 @@
 
 WordPress Theme to manage links.
 
+## How to set up?
+
+1. Add the theme to your `wp-content/themes` folder
+2. Activate the theme
+3. Create at least 1 link and add the Custom Field with the value `url`. This way the meta boxes dropdown will have the `url` value for next time you want to create a link.
+
+![WordPress Dashboard Custom Fields](https://cldup.com/G3NQCsUPd5.png)
+
+Now you can go to the next section and make use of the powerful bookmark autofill.
+
+## Use the bookmark
+
+Add this bookmark to your browser. Visit any site and hit the bookmark. You'll be redirected to the WordPress Dashboard with the page title and URL prefilled for you:
+
+```javascript
+javascript:window.location=`YOUR_SITE/wp-admin/post-new.php?post_type=link&title=${encodeURIComponent(document.title)}&url=${encodeURIComponent(window.location.href)}`
+```
+
 ## To Do
 
 - [x] Create build
 - [x] Use Bootstrap as a depedency
-- [ ] Create webpack bundle for the admin script
+- [x] Create webpack bundle for the admin script
 - [ ] Use PHP for for loading links, categories, pagination...
 - [ ] Create list
 - [ ] Create pagination

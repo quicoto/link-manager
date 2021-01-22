@@ -1,4 +1,5 @@
 const path = require('path');
+
 let mode = 'production';
 
 if (process.env.NODE_ENV === 'development') {
@@ -7,10 +8,12 @@ if (process.env.NODE_ENV === 'development') {
 
 module.exports = {
   mode,
-  entry: './js/main.js',
+  entry: {
+    main: './js/main.js',
+    admin: './js/admin.js',
+  },
   output: {
-    filename: 'scripts.min.js',
+    filename: '[name].min.js',
     path: path.resolve(__dirname, './'),
   },
 };
-
