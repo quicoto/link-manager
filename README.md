@@ -6,6 +6,7 @@ WordPress Theme to manage links.
 
 - [x] Create build
 - [x] Use Bootstrap as a depedency
+- [ ] Create webpack bundle for the admin script
 - [ ] Use PHP for for loading links, categories, pagination...
 - [ ] Create list
 - [ ] Create pagination
@@ -17,9 +18,6 @@ WordPress Theme to manage links.
 - [ ] URL of the link will be a meta field.
 - [ ] Create RSS feed or include the post type in the main one (so it can be triggered to share on Mastodon)
 - [ ] Add rel="nofollow noopener" to the links (check syntax)
-- [ ] User can create links in the FE
-- [ ] User can edit links in the FE
-- [ ] User can delete links in the FE
 - [ ] User can toggle on/off "share" when posting (default: on)
 - [ ] User can toggle on/off "read" when posting (default: on)
 - [ ] User can set the link as "read"
