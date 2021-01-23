@@ -104,35 +104,6 @@ function link_manager_scripts()
 }
 add_action("wp_enqueue_scripts", "link_manager_scripts");
 
-function getLinkUrl($post_id)
-{
-  $output = "";
-  $url = get_post_meta($post_id, "url", true);
-
-  if ($url) {
-    $output = sprintf('➡️ <a class="link-light" href="%s" target="_blank" rel="nofollow noopener noreferrer">%s</a>', $url, $url);
-  }
-
-  return $output;
-}
-
-function getLinkTags($post_id)
-{
-  $tags = wp_get_post_tags($post_id);
-  $html = "";
-  if (count($tags) > 0) {
-    $html = '<footer class="card-footer text-muted">Tags: ';
-    foreach ($tags as $tag) {
-      $tag_link = get_tag_link($tag->term_id);
-
-      $html .= "<a href='{$tag_link}' title='{$tag->name} Tag' class='link-light'>";
-      $html .= "{$tag->name}</a> ";
-    }
-    $html .= "</footer>";
-  }
-  echo $html;
-}
-
 /**
  * Register Link post-type
  */
@@ -152,3 +123,8 @@ require get_template_directory() . "/inc/template-functions.php";
  * Admin script
  */
 require get_template_directory() . "/inc/admin.php";
+
+/**
+ * Tag cloud
+ */
+require get_template_directory() . "/inc/tag-cloud.php";

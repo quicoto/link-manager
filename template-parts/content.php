@@ -12,11 +12,11 @@
   <div class="card bg-dark mb-3">
     <?php if (get_the_title() !== "") { ?>
         <header class="card-header">
-    <?php if (is_singular()):
-      the_title('<h1 class="entry-title">', "</h1>");
-    else:
-      the_title('<h2 class="entry-title">', "</h2>");
-    endif; ?>
+    <?php if (is_singular()): ?>
+      <h1><?= get_the_title() ?></h1>
+    <?php else: ?>
+      <h2 class="h4 mb-0"><?= get_the_title() ?></h2>
+    <?php endif; ?>
         </header>
     <?php } ?>
     <div class="card-body">
@@ -27,6 +27,8 @@
         ?>
       </div>
     </div>
-    <?php getLinkTags(get_the_ID()); ?>
-  </div>
+    <footer class="card-footer text-muted row">
+      <div class="col-12 col-md-8"><?php getLinkTags(get_the_ID()); ?></div>
+      <div class="col-12 col-md-4 text-md-end"><?php echo get_the_date(); ?></div>
+    </div>
 </article><!-- #post-<?php the_ID(); ?> -->

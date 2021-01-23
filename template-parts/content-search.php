@@ -14,10 +14,7 @@
 
 		<?php if ("post" === get_post_type()): ?>
 		<div class="entry-meta">
-			<?php
-   link_manager_posted_on();
-   link_manager_posted_by();
-   ?>
+			<?php echo get_the_date(); ?>
 		</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->

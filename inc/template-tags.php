@@ -7,45 +7,6 @@
  * @package link-manager
  */
 
-if (!function_exists("link_manager_posted_on")):
-  /**
-   * Prints HTML with meta information for the current post-date/time.
-   */
-  function link_manager_posted_on()
-  {
-    $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-    if (get_the_time("U") !== get_the_modified_time("U")) {
-      $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
-    }
-
-    $time_string = sprintf($time_string, esc_attr(get_the_date(DATE_W3C)), esc_html(get_the_date()), esc_attr(get_the_modified_date(DATE_W3C)), esc_html(get_the_modified_date()));
-
-    $posted_on = sprintf(
-      /* translators: %s: post date. */
-      esc_html_x("Posted on %s", "post date", "link-manager"),
-      '<a href="' . esc_url(get_permalink()) . '" rel="bookmark">' . $time_string . "</a>"
-    );
-
-    echo '<span class="posted-on">' . $posted_on . "</span>"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-  }
-endif;
-
-if (!function_exists("link_manager_posted_by")):
-  /**
-   * Prints HTML with meta information for the current author.
-   */
-  function link_manager_posted_by()
-  {
-    $byline = sprintf(
-      /* translators: %s: post author. */
-      esc_html_x("by %s", "post author", "link-manager"),
-      '<span class="author vcard"><a class="url fn n" href="' . esc_url(get_author_posts_url(get_the_author_meta("ID"))) . '">' . esc_html(get_the_author()) . "</a></span>"
-    );
-
-    echo '<span class="byline"> ' . $byline . "</span>"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-  }
-endif;
-
 if (!function_exists("link_manager_entry_footer")):
   /**
    * Prints HTML with meta information for the categories, tags and comments.
@@ -118,3 +79,38 @@ if (!function_exists("wp_body_open")):
     do_action("wp_body_open");
   }
 endif;
+
+// Relative date & time
+function wp_relative_date()
+{
+  return human_time_diff(get_the_time("U"), current_time("timestamp")) . " ago";
+}
+add_filter("get_the_date", "wp_relative_date"); // for posts
+
+function getLinkTags($post_id)
+{
+  $tags = wp_get_post_tags($post_id);
+  $html = '<div class="mb-1 mb-md-0">';
+  if (count($tags) > 0) {
+    $html .= "Tags: ";
+    foreach ($tags as $tag) {
+      $tag_link = get_tag_link($tag->term_id);
+      $html .= "<a href='{$tag_link}' title='{$tag->name} Tag' class='link-light'>";
+      $html .= "{$tag->name}</a> ";
+    }
+  }
+  $html .= "</div>";
+  echo $html;
+}
+
+function getLinkUrl($post_id)
+{
+  $output = "";
+  $url = get_post_meta($post_id, "url", true);
+
+  if ($url) {
+    $output = sprintf('➡️ <a class="link-light" href="%s" target="_blank" rel="nofollow noopener noreferrer">%s</a>', $url, $url);
+  }
+
+  return $output;
+}
