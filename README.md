@@ -31,7 +31,7 @@ javascript:window.location=`YOUR_SITE/wp-admin/post-new.php?post_type=link&title
 - [ ] Create archive of tags
 - [ ] Create search
 - [ ] Create custom post type
-- [ ] Title of the link
+- [ ] Remove all comments code
 - [ ] Post content: description of the link (to be used as additional text when sharing to Twitter)
 - [ ] URL of the link will be a meta field.
 - [ ] Create RSS feed or include the post type in the main one (so it can be triggered to share on Mastodon)
@@ -39,3 +39,5 @@ javascript:window.location=`YOUR_SITE/wp-admin/post-new.php?post_type=link&title
 - [ ] User can toggle on/off "share" when posting (default: on)
 - [ ] User can toggle on/off "read" when posting (default: on)
 - [ ] User can set the link as "read"
+- [ ] Double check no extra unused functions are left
+- [ ] Add screenshot
