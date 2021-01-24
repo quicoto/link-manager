@@ -15,5 +15,14 @@
     ],
     "theme_color": "#3a444e",
     "background_color": "#3a444e",
-    "display": "standalone"
+    "display": "standalone",
+    "share_target": {
+        "action": "/links/wp-admin/post-new.php?post_type=link",
+        "method": "GET",
+        "params": {
+            "title": "title",
+            "text": "description",
+            "url": "url"
+        }
+    }
 }
