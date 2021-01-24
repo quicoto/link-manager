@@ -1,6 +1,7 @@
 {
     "name": "Link Manager",
     "short_name": "Link Manager",
+    "description": "WordPress Theme to manage links",
     "icons": [
         {
             "src": "android-chrome-192x192.png",
@@ -16,6 +17,8 @@
     "theme_color": "#3a444e",
     "background_color": "#3a444e",
     "display": "standalone",
+    "start_url": "/links/",
+    "scope": "/links/",
     "share_target": {
         "action": "/links/wp-admin/post-new.php?post_type=link",
         "method": "GET",
