@@ -1,6 +1,6 @@
 {
   "name": "link-manager",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "WordPress Theme to manage links.",
   "scripts": {
     "build": "NODE_ENV=production run-s format:* lint:js build:*",
@@ -13,12 +13,10 @@
     "watch": "NODE_ENV=development onchange 'js/*.js' 'sass/*.scss' 'style.scss' '*.php' '**/*.php' -- npm-run-all build:*",
     "format": "npm-run-all format:*",
     "format:js": "prettier --write ./js/*.js",
-    "format:scss": "prettier --write ./style.scss",
-    "format:php": "prettier --write ./**/*.php ./*.php --print-width 500 --php-version 7.0 --tab-width 2"
+    "format:scss": "prettier --write ./style.scss"
   },
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^4.0.0",
-    "@prettier/plugin-php": "^0.16.1",
     "bootstrap": "^5.0.0-beta1",
     "clean-css-cli": "^4.3.0",
     "eslint": "^7.18.0",

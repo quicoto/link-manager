@@ -13,7 +13,7 @@
 <html <?php language_attributes(); ?>>
 <head>
 
-	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo("name"); ?> Feed" href="<?php bloginfo("url"); ?>?feed=rss2" />
+	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo("name"); ?> Feed" href="<?php bloginfo("url"); ?>?feed=links" />
 	<meta charset="<?php bloginfo("charset"); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
