@@ -8,7 +8,7 @@
  */
 
 if (!defined("_S_VERSION")) {
-  $theme_version = "1.4.1";
+  $theme_version = "1.4.2";
 
   // Replace the version number of the theme on each release.
   define("_S_VERSION", $theme_version);
@@ -100,6 +100,11 @@ function linkmanager_deregister_scripts()
   wp_deregister_script("wp-embed");
 }
 add_action("wp_footer", "linkmanager_deregister_scripts");
+
+function linkmanager_remove_block_library_css(){
+  wp_dequeue_style( 'wp-block-library' );
+}
+add_action( 'wp_enqueue_scripts', 'linkmanager_remove_block_library_css' );
 
 function linkmanager_arrow_emoji()
 {
