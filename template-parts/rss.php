@@ -106,7 +106,7 @@ do_action("rss_tag_pre", "rss2");
     $description .= linkmanager_arrow_emoji() . " " . getLinkURL(get_the_ID());
     $description .= "\n";
     $description .= "\n";
-    $description .= getLinkTagsRSS(get_the_ID());
+    $description .= getLinkTagsRSS(get_the_ID(), true);
     ?>
     <description><![CDATA[<?php echo $content; ?>]]></description>
     <content:encoded><![CDATA[<?php echo $description; ?>]]></content:encoded>

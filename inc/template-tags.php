@@ -64,13 +64,19 @@ function getLinkTags($post_id)
   echo $html;
 }
 
-function getLinkTagsRSS($post_id)
+function getLinkTagsRSS($post_id, $forRSS = false)
 {
   $tags = wp_get_post_tags($post_id);
   $output = "";
   if (count($tags) > 0) {
     foreach ($tags as $tag) {
-      $output .= "#{$tag->name} ";
+      $name = $tag->name;
+
+      if ($forRSS) {
+        $name = str_replace(' ', '', $name);
+      }
+
+      $output .= "#{$name} ";
     }
   }
   return $output;
