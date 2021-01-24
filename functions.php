@@ -121,11 +121,6 @@ require get_template_directory() . "/inc/template-tags.php";
 require get_template_directory() . "/inc/template-functions.php";
 
 /**
- * Admin script
- */
-require get_template_directory() . "/inc/admin.php";
-
-/**
  * RSS Feed
  */
 require get_template_directory() . "/inc/rss.php";
