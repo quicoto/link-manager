@@ -6,7 +6,7 @@
  *
  * @package link-manager
  */
-$theme_version = "1.0.0";
+$theme_version = "1.0.2";
 
 if (!defined("_S_VERSION")) {
   // Replace the version number of the theme on each release.

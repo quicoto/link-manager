@@ -27,12 +27,17 @@ do_action("rss_tag_pre", "rss2");
 	xmlns:atom="http://www.w3.org/2005/Atom"
 	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
 	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
-	<?php /**
+	 /**
+ * Fires at the end of the RSS root to add namespaces.
+ *
+ * @since 2.0.0
+ */<?php
+/**
   * Fires at the end of the RSS root to add namespaces.
   *
   * @since 2.0.0
   */
- do_action("rss2_ns"); ?>
+?>do_action("rss2_ns"); ?>
 >
 
 <channel>
@@ -105,12 +110,17 @@ do_action("rss_tag_pre", "rss2");
 
 		<?php rss_enclosure(); ?>
 
-		<?php /**
+		 /**
+    * Fires at the end of each RSS2 feed item.
+    *
+    * @since 2.0.0
+    */<?php
+   /**
    * Fires at the end of each RSS2 feed item.
    *
    * @since 2.0.0
    */
-  do_action("rss2_item"); ?>
+   ?>do_action("rss2_item"); ?>
 	</item>
 	<?php
  endwhile;

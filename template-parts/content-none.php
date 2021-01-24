@@ -17,8 +17,7 @@
   <?php if (is_search()): ?>
 			<p>Sorry, but nothing links matched <em><?= $_GET["s"] ?></em>.</p>
   <?php else: ?>
-
-			<p><?php esc_html_e("It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.", "link-manager"); ?></p>
-			<?php get_search_form();endif; ?>
+			<p><?php esc_html_e("It seems we can't find any links. Perhaps create one first?", "link-manager"); ?></p>
+	<?php endif; ?>
 	</div><!-- .page-content -->
 </section><!-- .no-results -->
