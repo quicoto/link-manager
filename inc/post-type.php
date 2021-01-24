@@ -57,6 +57,8 @@ add_action("init", "linkmanager_postype_link_init");
 
 function linkmanager_add_custom_post_type_to_query($query)
 {
-  $query->set("post_type", ["link"]);
+  if (!is_admin()) {
+    $query->set("post_type", ["link"]);
+  }
 }
 add_action("pre_get_posts", "linkmanager_add_custom_post_type_to_query");

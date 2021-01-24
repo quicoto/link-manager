@@ -1,6 +1,12 @@
 // eslint-disable-next-line func-names
 (function () {
   const SELECTORS = {
+    minorPublishing: '#minor-publishing',
+    screenMetaLinks: '#screen-meta-links',
+    editorPostStatus: '#post-status-info',
+    editorToolbar: '#ed_toolbar',
+    slugBox: '#edit-slug-box',
+    editorContentContainer: '#wp-content-editor-container',
     editorContent: '#content',
     postTitle: 'input[name="post_title"]',
     metavalue: 'textarea[name="metavalue"]',
@@ -9,10 +15,20 @@
   const VALUES = {
     metakey: 'url',
   };
-  const _ = {};
+  const _ = {
+    isMobile: false,
+  };
   const _$ = {};
 
   function _setElements() {
+    _$.minorPublishing = document.querySelector(SELECTORS.minorPublishing);
+    _$.screenMetaLinks = document.querySelector(SELECTORS.screenMetaLinks);
+    _$.editorPostStatus = document.querySelector(SELECTORS.editorPostStatus);
+    _$.editorToolbar = document.querySelector(SELECTORS.editorToolbar);
+    _$.slugBox = document.querySelector(SELECTORS.slugBox);
+    _$.editorContentContainer = document.querySelector(
+      SELECTORS.editorContentContainer,
+    );
     _$.editorContent = document.querySelector(SELECTORS.editorContent);
     _$.metavalue = document.querySelector(SELECTORS.metavalue);
     _$.metakeyselect = document.querySelector(SELECTORS.metakeyselect);
@@ -101,6 +117,30 @@
     }
   }
 
+  function _optimizeSpacing() {
+    if (_$.minorPublishing) {
+      _$.minorPublishing.setAttribute('hidden', '');
+    }
+    if (_$.screenMetaLinks) {
+      _$.screenMetaLinks.setAttribute('hidden', '');
+    }
+    if (_$.slugBox) {
+      _$.slugBox.setAttribute('hidden', '');
+    }
+    if (_$.editorToolbar) {
+      _$.editorToolbar.setAttribute('hidden', '');
+    }
+    if (_$.editorPostStatus) {
+      _$.editorPostStatus.setAttribute('hidden', '');
+    }
+    if (_$.editorContent) {
+      _$.editorContentContainer.style.height = '65px';
+      _$.editorContent.style.height = '70px';
+      _$.editorContent.style.position = 'absolute';
+      _$.editorContent.style.top = '-95px';
+    }
+  }
+
   function _checkPostTypeParam() {
     if (
       _.queryParameters.title
@@ -113,10 +153,21 @@
     }
   }
 
+  function _setIsMobile() {
+    // eslint-disable-next-line no-restricted-globals
+    const width = window.innerWidth > 0 ? window.innerWidth : screen.width;
+
+    _.isMobile = width <= 768;
+  }
+
   function _init() {
     _setElements();
     _.queryParameters = getLocationSearchParameters();
+    _setIsMobile();
     _checkPostTypeParam();
+    if (_.isMobile) {
+      _optimizeSpacing();
+    }
     if (_.queryParameters.title) {
       _populatePostTitle();
     }

@@ -6,7 +6,7 @@
  *
  * @package link-manager
  */
-$theme_version = "1.3.6";
+$theme_version = "1.4.0";
 
 if (!defined("_S_VERSION")) {
   // Replace the version number of the theme on each release.
@@ -124,3 +124,8 @@ require get_template_directory() . "/inc/template-functions.php";
  * RSS Feed
  */
 require get_template_directory() . "/inc/rss.php";
+
+/**
+ * Admin
+ */
+require get_template_directory() . "/inc/admin.php";
