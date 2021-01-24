@@ -54,10 +54,15 @@ function getLinkTags($post_id)
   $html = '<div class="mb-1 mb-md-0">';
   if (count($tags) > 0) {
     $html .= "Tags: ";
+    $count = 0;
     foreach ($tags as $tag) {
       $tag_link = get_tag_link($tag->term_id);
-      $html .= "<a href='{$tag_link}' title='{$tag->name} Tag'>";
-      $html .= "{$tag->name}</a> ";
+      if ($count > 0 ) {
+        $html .= ",";
+      }
+      $html .= " <a href='{$tag_link}' title='{$tag->name} Tag'>";
+      $html .= "{$tag->name}</a>";
+      $count++;
     }
   }
   $html .= "</div>";
