@@ -23,12 +23,14 @@
       <div class="card-text">
         <?php
         the_content();
-        echo getLinkUrl(get_the_ID());
+        echo getLinkHTML(get_the_ID());
         ?>
       </div>
     </div>
-    <footer class="card-footer text-muted row">
-      <div class="col-12 col-md-8"><?php getLinkTags(get_the_ID()); ?></div>
-      <div class="col-12 col-md-4 text-md-end"><?php echo get_the_date(); ?></div>
+    <footer class="card-footer text-muted container">
+      <div class="row">
+        <div class="col-12 col-md-8"><?php getLinkTags(get_the_ID()); ?></div>
+        <div class="col-12 col-md-4 text-md-end"><?php echo get_the_date(); ?></div>
+      </div>
     </div>
 </article><!-- #post-<?php the_ID(); ?> -->

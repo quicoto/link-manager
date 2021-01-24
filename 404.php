@@ -10,51 +10,23 @@
 get_header(); ?>
 
 	<main id="primary" class="container">
+		<div class="row">
+			<div class="col-12 col-md-8">
+				<section class="error-404 not-found row">
+					<div class="col">
+						<header class="page-header">
+							<h1 class="page-title"><?php esc_html_e("Oops! That page can&rsquo;t be found.", "link-manager"); ?></h1>
+						</header><!-- .page-header -->
 
-		<section class="error-404 not-found row">
-			<div class="col">
-
-				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e("Oops! That page can&rsquo;t be found.", "link-manager"); ?></h1>
-				</header><!-- .page-header -->
-
-				<div class="page-content">
-					<p><?php esc_html_e("It looks like nothing was found at this location. Maybe try one of the links below or a search?", "link-manager"); ?></p>
-
-						<?php
-      get_search_form();
-
-      the_widget("WP_Widget_Recent_Posts");
-      ?>
-
-						<div class="widget widget_categories">
-							<h2 class="widget-title"><?php esc_html_e("Most Used Categories", "link-manager"); ?></h2>
-							<ul>
-								<?php wp_list_categories([
-          "orderby" => "count",
-          "order" => "DESC",
-          "show_count" => 1,
-          "title_li" => "",
-          "number" => 10,
-        ]); ?>
-							</ul>
-						</div><!-- .widget -->
-
-						<?php
-      /* translators: %1$s: smiley */
-      $link_manager_archive_content = "<p>" . sprintf(esc_html__('Try looking in the monthly archives. %1$s', "link-manager"), convert_smilies(":)")) . "</p>";
-      the_widget("WP_Widget_Archives", "dropdown=1", "after_title=</h2>$link_manager_archive_content");
-
-      the_widget("WP_Widget_Tag_Cloud");
-      ?>
-
-				</div><!-- .page-content -->
+						<div class="page-content">
+							<p><?php esc_html_e("Hit the site name and get to the home", "link-manager"); ?></p>
+						</div><!-- .page-content -->
+					</div>
+				</section><!-- .error-404 -->
 			</div>
-		</section><!-- .error-404 -->
-
+			<?php get_sidebar(); ?>
 	</main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();
 

@@ -6,13 +6,14 @@
  *
  * @package link-manager
  */
+$theme_version = "1.0.0";
 
 if (!defined("_S_VERSION")) {
   // Replace the version number of the theme on each release.
-  define("_S_VERSION", "1.0.0");
+  define("_S_VERSION", $theme_version);
 }
 
-if (!function_exists("link_manager_setup")):
+if (!function_exists("linkmanager_setup")):
   /**
    * Sets up theme defaults and registers support for various WordPress features.
    *
@@ -20,7 +21,7 @@ if (!function_exists("link_manager_setup")):
    * runs before the init hook. The init hook is too late for some features, such
    * as indicating support for post thumbnails.
    */
-  function link_manager_setup()
+  function linkmanager_setup()
   {
     /*
      * Make theme available for translation.
@@ -30,19 +31,16 @@ if (!function_exists("link_manager_setup")):
      */
     load_theme_textdomain("link-manager", get_template_directory() . "/languages");
 
-    // Add default posts and comments RSS feed links to head.
-    add_theme_support("automatic-feed-links");
-
     function linkmanager_widgets_init()
     {
       register_sidebar([
         "name" => esc_html__("Sidebar", "test"),
         "id" => "sidebar-1",
         "description" => esc_html__("Add widgets here.", "test"),
-        "before_widget" => '<section id="%1$s" class="widget %2$s">',
+        "before_widget" => '<section id="%1$s" class="widget %2$s mb-3">',
         "after_widget" => "</section>",
-        "before_title" => '<h2 class="widget-title">',
-        "after_title" => "</h2>",
+        "before_title" => '<h3 class="widget-title">',
+        "after_title" => "</h3>",
       ]);
     }
     add_action("widgets_init", "linkmanager_widgets_init");
@@ -60,16 +58,12 @@ if (!function_exists("link_manager_setup")):
       "menu-1" => esc_html__("Primary", "link-manager"),
     ]);
 
-    /*
-     * Switch default core markup for search form, comment form, and comments
-     * to output valid HTML5.
-     */
     add_theme_support("html5", ["search-form"]);
 
     // Set up the WordPress core custom background feature.
     add_theme_support(
       "custom-background",
-      apply_filters("link_manager_custom_background_args", [
+      apply_filters("linkmanager_custom_background_args", [
         "default-color" => "ffffff",
         "default-image" => "",
       ])
@@ -77,32 +71,29 @@ if (!function_exists("link_manager_setup")):
 
     // Add theme support for selective refresh for widgets.
     add_theme_support("customize-selective-refresh-widgets");
-
-    /**
-     * Add support for core custom logo.
-     *
-     * @link https://codex.wordpress.org/Theme_Logo
-     */
-    add_theme_support("custom-logo", [
-      "height" => 250,
-      "width" => 250,
-      "flex-width" => true,
-      "flex-height" => true,
-    ]);
   }
 endif;
-add_action("after_setup_theme", "link_manager_setup");
+add_action("after_setup_theme", "linkmanager_setup");
 
 /**
  * Enqueue scripts and styles.
  */
-function link_manager_scripts()
+function linkmanager_scripts()
 {
-  $theme_version = "1.0.0";
-
   wp_enqueue_style("linkmanager-style", get_stylesheet_uri(), [], $theme_version);
 }
-add_action("wp_enqueue_scripts", "link_manager_scripts");
+add_action("wp_enqueue_scripts", "linkmanager_scripts");
+
+function linkmanager_deregister_scripts()
+{
+  wp_deregister_script("wp-embed");
+}
+add_action("wp_footer", "linkmanager_deregister_scripts");
+
+function linkmanager_arrow_emoji()
+{
+  return "➡️";
+}
 
 /**
  * Register Link post-type
@@ -125,6 +116,6 @@ require get_template_directory() . "/inc/template-functions.php";
 require get_template_directory() . "/inc/admin.php";
 
 /**
- * Tag cloud
+ * RSS Feed
  */
-require get_template_directory() . "/inc/tag-cloud.php";
+require get_template_directory() . "/inc/rss.php";

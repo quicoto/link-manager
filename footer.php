@@ -9,14 +9,14 @@
  * @package link-manager
  */
 ?>
-	<footer id="colophon" class="site-footer bg-dark text-light mt-2">
+	<footer id="colophon" class="site-footer bg-dark mt-2">
 		<div class="container pt-4 pb-4">
 			<div class="row">
 					<div class="col-12 col-md-6 text-center text-md-start mb-2 mb-md-0">
-						Powered by <a class="link-light" href="https://wordpress.org">WordPress</a>
+						Powered by <a href="https://wordpress.org">WordPress</a>
 					</div>
 					<div class="col-12 col-md-6 text-center text-md-end">
-						With ❤️ from <a class="link-light" href="https://ricard.dev/">Ricard Torres</a>
+						With ❤️ from <a href="https://ricard.blog/" title="Ricard Torres Blog">Ricard Torres</a>
 					</div>
 				</div>
 			</div><!-- .site-info -->

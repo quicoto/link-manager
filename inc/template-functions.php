@@ -11,7 +11,7 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
-function link_manager_body_classes($classes)
+function linkmanager_body_classes($classes)
 {
   // Adds a class of hfeed to non-singular pages.
   if (!is_singular()) {
@@ -25,15 +25,4 @@ function link_manager_body_classes($classes)
 
   return $classes;
 }
-add_filter("body_class", "link_manager_body_classes");
-
-/**
- * Add a pingback url auto-discovery header for single posts, pages, or attachments.
- */
-function link_manager_pingback_header()
-{
-  if (is_singular() && pings_open()) {
-    printf('<link rel="pingback" href="%s">', esc_url(get_bloginfo("pingback_url")));
-  }
-}
-add_action("wp_head", "link_manager_pingback_header");
+add_filter("body_class", "linkmanager_body_classes");

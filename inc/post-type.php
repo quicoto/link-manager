@@ -4,7 +4,7 @@
  *
  * @see get_post_type_labels() for label keys.
  */
-function postype_link_init()
+function linkmanager_postype_link_init()
 {
   $labels = [
     "name" => _x("Links", "Post type general name", "textdomain"),
@@ -53,12 +53,10 @@ function postype_link_init()
   register_post_type("link", $args);
 }
 
-add_action("init", "postype_link_init");
+add_action("init", "linkmanager_postype_link_init");
 
-function add_custom_post_type_to_query($query)
+function linkmanager_add_custom_post_type_to_query($query)
 {
-  if ($query->is_home() && $query->is_main_query()) {
-    $query->set("post_type", ["link"]);
-  }
+  $query->set("post_type", ["link"]);
 }
-add_action("pre_get_posts", "add_custom_post_type_to_query");
+add_action("pre_get_posts", "linkmanager_add_custom_post_type_to_query");

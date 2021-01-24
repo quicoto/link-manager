@@ -1,6 +1,7 @@
 // eslint-disable-next-line func-names
 (function () {
   const SELECTORS = {
+    editorContent: '#content',
     postTitle: 'input[name="post_title"]',
     metavalue: 'textarea[name="metavalue"]',
     metakeyselect: 'select[name="metakeyselect"]',
@@ -12,6 +13,7 @@
   const _$ = {};
 
   function _setElements() {
+    _$.editorContent = document.querySelector(SELECTORS.editorContent);
     _$.metavalue = document.querySelector(SELECTORS.metavalue);
     _$.metakeyselect = document.querySelector(SELECTORS.metakeyselect);
     _$.postTitle = document.querySelector(SELECTORS.postTitle);
@@ -93,6 +95,12 @@
     }
   }
 
+  function _populatePostDescription() {
+    if (_$.editorContent) {
+      _$.editorContent.value = _.queryParameters.description;
+    }
+  }
+
   function _init() {
     _setElements();
     _.queryParameters = getLocationSearchParameters();
@@ -101,6 +109,9 @@
     }
     if (_.queryParameters.url) {
       _populatePostURL();
+    }
+    if (_.queryParameters.description) {
+      _populatePostDescription();
     }
   }
 

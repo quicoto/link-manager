@@ -1,8 +1,12 @@
-# Link Manager
+# 🔗 Link Manager
 
 WordPress Theme to manage links.
 
-## How to set up?
+![Desktop screenshot](https://cloudup.com/cBnxQKOIHJz+)
+
+![Mobile screenshot](https://cldup.com/kFVpZkpyrM.png)
+
+## 💡 How to set up?
 
 1. Add the theme to your `wp-content/themes` folder
 2. Activate the theme
@@ -10,34 +14,27 @@ WordPress Theme to manage links.
 
 ![WordPress Dashboard Custom Fields](https://cldup.com/G3NQCsUPd5.png)
 
-Now you can go to the next section and make use of the powerful bookmark autofill.
+4. Disable the Visual editor in your Profile. So we only use the regular HTML textarea field. Like so:
 
-## Use the bookmark
+![WordPress Profile Disable Visual Editor](https://cldup.com/1LPYmBLkNN.png)
+
+5. Set a Search Widget to the sidebar.
+6. Set a Tag Cloud Widget to the sidebar.
+
+![WordPress Widgets](https://cldup.com/8_BR1x4eu9.png)
+
+Done! 🎉 Now you can go to the next section and make use of the powerful bookmark autofill.
+
+## 🔖 Use the bookmark
 
 Add this bookmark to your browser. Visit any site and hit the bookmark. You'll be redirected to the WordPress Dashboard with the page title and URL prefilled for you:
 
 ```javascript
-javascript:window.location=`YOUR_SITE/wp-admin/post-new.php?post_type=link&title=${encodeURIComponent(document.title)}&url=${encodeURIComponent(window.location.href)}`
+javascript:window.location=`YOUR_SITE/wp-admin/post-new.php?post_type=link&title=${encodeURIComponent(document.title)}&url=${encodeURIComponent(window.location.href)}&description=${document.querySelector('meta[name="description"]')?.content}`
 ```
 
-## To Do
+## Automatically share links via RSS
 
-- [x] Create build
-- [x] Use Bootstrap as a depedency
-- [x] Create webpack bundle for the admin script
-- [x] Use PHP for for loading links, categories, pagination...
-- [x] Create home list
-- [ ] Create pagination
-- [ ] Create archive of tags
-- [ ] Create search
-- [ ] Create custom post type
-- [ ] Remove all comments code
-- [ ] Post content: description of the link (to be used as additional text when sharing to Twitter)
-- [ ] URL of the link will be a meta field.
-- [ ] Create RSS feed or include the post type in the main one (so it can be triggered to share on Mastodon)
-- [ ] Add rel="nofollow noopener" to the links (check syntax)
-- [ ] User can toggle on/off "share" when posting (default: on)
-- [ ] User can toggle on/off "read" when posting (default: on)
-- [ ] User can set the link as "read"
-- [ ] Double check no extra unused functions are left
-- [ ] Add screenshot
+The RSS feed has been modified to include all your links.
+
+You can use [IFTT](https://ifttt.com/) or similar service to pull your RSS feed and automatically share the links to your Twitter or Mastodon account.
