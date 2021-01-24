@@ -38,3 +38,17 @@ javascript:window.location=`YOUR_SITE/wp-admin/post-new.php?post_type=link&title
 The RSS feed has been modified to include all your links.
 
 You can use [IFTT](https://ifttt.com/) or similar service to pull your RSS feed and automatically share the links to your Twitter or Mastodon account.
+
+## Web Share Target API
+
+You can even install this web app to be available for you when sharing via Android.
+
+1. Create a `service-worker.js` at the root of your WordPress installation. Get the content for it from the sample in the themes `assets/service-worker.js`
+
+**Why?**
+
+Google Chrome wants it at the root to match the scope defined in the `site.manifest`
+
+In any case, the Service Worker does nothing. It only tricks Chrome into allowing you to install the app.
+
+2. Visit your Link Manager site on Google Chrome and install the app to your home screen.

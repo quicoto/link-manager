@@ -6,7 +6,7 @@
  *
  * @package link-manager
  */
-$theme_version = "1.3.4";
+$theme_version = "1.3.5";
 
 if (!defined("_S_VERSION")) {
   // Replace the version number of the theme on each release.
@@ -83,6 +83,16 @@ function linkmanager_scripts()
   wp_enqueue_style("linkmanager-style", get_stylesheet_uri(), [], $theme_version);
 }
 add_action("wp_enqueue_scripts", "linkmanager_scripts");
+
+function linkmanager_enqueue_admin_script($hook)
+{
+  if ("post-new.php" === $hook || "post.php" === $hook) {
+    wp_enqueue_script("my_custom_script", get_template_directory_uri() . "/admin.min.js", [], $theme_version, true);
+  }
+}
+
+add_action("admin_enqueue_scripts", "linkmanager_enqueue_admin_script");
+
 
 function linkmanager_deregister_scripts()
 {

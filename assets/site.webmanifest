@@ -23,7 +23,6 @@
         "action": "/links/wp-admin/post-new.php?post_type=link",
         "method": "GET",
         "params": {
-            "post_type": "link",
             "title": "title",
             "text": "description",
             "url": "url"

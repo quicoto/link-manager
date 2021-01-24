@@ -9,7 +9,6 @@ if (process.env.NODE_ENV === 'development') {
 module.exports = {
   mode,
   entry: {
-    main: './js/main.js',
     admin: './js/admin.js',
   },
   output: {

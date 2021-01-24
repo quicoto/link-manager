@@ -101,9 +101,22 @@
     }
   }
 
+  function _checkPostTypeParam() {
+    if (
+      _.queryParameters.title
+      && _.queryParameters.url
+      && !_.queryParameters.post_type
+    ) {
+      // We might've arrived here via the Web Share Target API
+      // Fix the URL
+      window.location = `${window.location.href}&post_type=link`;
+    }
+  }
+
   function _init() {
     _setElements();
     _.queryParameters = getLocationSearchParameters();
+    _checkPostTypeParam();
     if (_.queryParameters.title) {
       _populatePostTitle();
     }
