@@ -26,6 +26,13 @@
 	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="theme-color" content="#3a444e">
 
+	<script>
+		/* Only register a service worker if it's supported */
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('<?= get_stylesheet_directory_uri() ?>/assets/service-worker.js');
+		}
+	</script>
+
 	<?php wp_head(); ?>
 </head>
 
