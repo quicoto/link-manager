@@ -29,7 +29,7 @@
 	<script>
 		/* Only register a service worker if it's supported */
 		if ('serviceWorker' in navigator) {
-			navigator.serviceWorker.register('<?= get_stylesheet_directory_uri() ?>/assets/service-worker.js');
+			navigator.serviceWorker.register('<?php bloginfo("url"); ?>/service-worker.js');
 		}
 	</script>
 
