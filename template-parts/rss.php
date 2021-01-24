@@ -92,7 +92,15 @@ do_action("rss_tag_pre", "rss2");
 		<guid isPermaLink="false"><?php the_guid(); ?></guid>
 
     <?php
-    $description = '"' . get_the_title() . '"';
+    $content = get_the_content();
+
+    $description = "";
+    if ($content !== "") {
+      $description .= $content;
+      $description .= "\n";
+      $description .= "\n";
+    }
+    $description .= '"' . get_the_title() . '"';
     $description .= "\n";
     $description .= "\n";
     $description .= linkmanager_arrow_emoji() . " " . getLinkURL(get_the_ID());
