@@ -6,9 +6,10 @@
  *
  * @package link-manager
  */
-$theme_version = "1.4.0";
 
 if (!defined("_S_VERSION")) {
+  $theme_version = "1.4.1";
+
   // Replace the version number of the theme on each release.
   define("_S_VERSION", $theme_version);
 }
@@ -80,14 +81,14 @@ add_action("after_setup_theme", "linkmanager_setup");
  */
 function linkmanager_scripts()
 {
-  wp_enqueue_style("linkmanager-style", get_stylesheet_uri(), [], $theme_version);
+  wp_enqueue_style("linkmanager-style", get_stylesheet_uri(), [], _S_VERSION);
 }
 add_action("wp_enqueue_scripts", "linkmanager_scripts");
 
 function linkmanager_enqueue_admin_script($hook)
 {
   if ("post-new.php" === $hook || "post.php" === $hook) {
-    wp_enqueue_script("my_custom_script", get_template_directory_uri() . "/admin.min.js", [], $theme_version, true);
+    wp_enqueue_script("my_custom_script", get_template_directory_uri() . "/admin.min.js", array(), _S_VERSION, true);
   }
 }
 

@@ -134,10 +134,18 @@
       _$.editorPostStatus.setAttribute('hidden', '');
     }
     if (_$.editorContent) {
-      _$.editorContentContainer.style.height = '65px';
+      const callback = (mutationsList) => {
+        // eslint-disable-next-line no-restricted-syntax
+        for (const mutation of mutationsList) {
+          if (mutation.type === 'attributes') {
+            _$.editorContent.style.marginTop = '0';
+          }
+        }
+      };
+      const observer = new MutationObserver(callback);
+
+      observer.observe(_$.editorContent, { attributes: true });
       _$.editorContent.style.height = '70px';
-      _$.editorContent.style.position = 'absolute';
-      _$.editorContent.style.top = '-95px';
     }
   }
 
