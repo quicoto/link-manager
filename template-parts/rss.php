@@ -108,8 +108,8 @@ do_action("rss_tag_pre", "rss2");
     $description .= "\n";
     $description .= getLinkTagsRSS(get_the_ID());
     ?>
-    <description><![CDATA[<?php echo $description; ?>]]></description>
-    <content:encoded><![CDATA[<?php echo encode_content_for_feed(getLinkHTML(get_the_ID())); ?>]]></content:encoded>
+    <description><![CDATA[<?php echo $content; ?>]]></description>
+    <content:encoded><![CDATA[<?php echo $description; ?>]]></content:encoded>
 
 		<?php rss_enclosure(); ?>
 
