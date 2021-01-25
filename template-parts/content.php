@@ -15,8 +15,12 @@
     <?php if (is_singular()): ?>
       <h1><?= get_the_title() ?></h1>
     <?php else: ?>
-      <h2 class="h4 mb-0"><?= get_the_title() ?></h2>
+      <h2 class="h4 mb-0 float-start"><?= get_the_title() ?></h2>
     <?php endif; ?>
+    <?php if (get_edit_post_link()) {?>
+        <a class="float-end" href="<?=get_edit_post_link()?>" style="transform: rotateY(
+180deg);">✏️</a>
+    <?php } ?>
         </header>
     <?php } ?>
     <div class="card-body">
