@@ -150,11 +150,7 @@
   }
 
   function _checkPostTypeParam() {
-    if (
-      _.queryParameters.title
-      && _.queryParameters.url
-      && !_.queryParameters.post_type
-    ) {
+    if (_.queryParameters.url && !_.queryParameters.post_type) {
       // We might've arrived here via the Web Share Target API
       // Fix the URL
       window.location = `${window.location.href}&post_type=link`;
