@@ -46,7 +46,6 @@ function wp_relative_date()
 {
   return human_time_diff(get_the_time("U"), current_time("timestamp")) . " ago";
 }
-add_filter("get_the_date", "wp_relative_date"); // for posts
 
 function getLinkTags($post_id)
 {

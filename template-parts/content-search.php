@@ -14,7 +14,7 @@
 
 		<?php if ("post" === get_post_type()): ?>
 		<div class="entry-meta">
-			<?php echo get_the_date(); ?>
+			<?php echo wp_relative_date(); ?>
 		</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->

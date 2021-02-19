@@ -1,6 +1,6 @@
 {
   "name": "link-manager",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "description": "WordPress Theme to manage links.",
   "scripts": {
     "build": "NODE_ENV=production run-s format:* lint:js build:*",

@@ -8,7 +8,7 @@
  */
 
 if (!defined("_S_VERSION")) {
-  $theme_version = "1.4.4";
+  $theme_version = "1.4.5";
 
   // Replace the version number of the theme on each release.
   define("_S_VERSION", $theme_version);

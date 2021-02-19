@@ -34,7 +34,7 @@
     <footer class="card-footer text-muted container">
       <div class="row">
         <div class="col-12 col-md-8"><?php getLinkTags(get_the_ID()); ?></div>
-        <div class="col-12 col-md-4 text-md-end"><?php echo get_the_date(); ?></div>
+        <div class="col-12 col-md-4 text-md-end" title="<?php echo get_the_date(); ?>"><?php echo wp_relative_date(); ?></div>
       </div>
     </div>
 </article><!-- #post-<?php the_ID(); ?> -->
