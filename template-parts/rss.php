@@ -100,7 +100,7 @@ do_action("rss_tag_pre", "rss2");
       $description .= "\n";
       $description .= "\n";
     }
-    if (html_entity_decode(get_the_title_rss()) === "") {
+    if (html_entity_decode(get_the_title_rss()) !== "") {
       $description .= '"' . html_entity_decode(get_the_title_rss()) . '"';
       $description .= "\n";
       $description .= "\n";
