@@ -5,6 +5,7 @@ module.exports = {
         './*.php',
         './**/*.php',
       ],
+      safelist: ['tag-cloud-link'],
     },
   },
 };
